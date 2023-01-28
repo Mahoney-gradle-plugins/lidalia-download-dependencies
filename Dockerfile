@@ -38,18 +38,18 @@ COPY --chown=$username . .
 FROM builder as tester
 # So the actual build can run without network access. Proves no tests rely on external services.
 RUN --mount=type=cache,target=$gradle_cache_dir,gid=$gid,uid=$uid \
-    ./gradlew --no-watch-fs || mkdir -p build
+    ./gradlew --no-watch-fs build || mkdir -p build
 
 
 FROM scratch as build-output
 ARG work_dir
 
-COPY --from=tester $work_dir/plugin/build .
+COPY --from=tester $work_dir/build .
 
 # The builder step is guaranteed not to fail, so that the worker output can be tagged and its
 # contents (build reports) extracted.
 # You run this as:
-# `docker build . --target build-reports --output build-reports && docker build .`
+# `docker build . --target build-output --output build && docker build .`
 # to retrieve the build reports whether or not the previous line exited successfully.
 # Workaround for https://github.com/moby/buildkit/issues/1421
 FROM tester as checker
@@ -59,4 +59,4 @@ RUN --mount=type=cache,target=$gradle_cache_dir,gid=$gid,uid=$uid \
 FROM scratch as jarfile
 ARG work_dir
 
-COPY --from=checker $work_dir/plugin/build/libs .
+COPY --from=checker $work_dir/build/libs .
