@@ -1,5 +1,7 @@
 import java.net.URI
 
+group = "uk.org.lidalia.gradle.plugin"
+
 plugins {
     `java-gradle-plugin`
     `kotlin-dsl`
