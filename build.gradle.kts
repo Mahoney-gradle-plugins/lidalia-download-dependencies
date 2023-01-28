@@ -6,6 +6,7 @@ plugins {
     `java-gradle-plugin`
     `kotlin-dsl`
     `maven-publish`
+    id("uk.org.lidalia.downloaddependencies") version "0.4.0"
 }
 
 repositories {
