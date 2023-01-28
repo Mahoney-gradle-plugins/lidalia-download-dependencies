@@ -2,14 +2,15 @@ import java.net.URI
 
 group = "uk.org.lidalia.gradle.plugin"
 
+@Suppress("DSL_SCOPE_VIOLATION")
 plugins {
   `java-gradle-plugin`
   `kotlin-dsl`
   `maven-publish`
-  id("uk.org.lidalia.downloaddependencies") version "0.4.0"
-  id("com.autonomousapps.dependency-analysis") version "1.18.0"
-  id("org.jmailen.kotlinter") version "3.13.0"
-  id("com.github.ben-manes.versions") version "0.44.0"
+  alias(libs.plugins.downloaddependencies)
+  alias(libs.plugins.dependencyanalysis)
+  alias(libs.plugins.kotlinter)
+  alias(libs.plugins.versions)
 }
 
 repositories {
