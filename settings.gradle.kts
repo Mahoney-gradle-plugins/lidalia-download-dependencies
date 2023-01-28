@@ -8,4 +8,3 @@
  */
 
 rootProject.name = "lidalia-download-dependencies"
-include("plugin")
