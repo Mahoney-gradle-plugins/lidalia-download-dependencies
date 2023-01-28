@@ -13,30 +13,32 @@ import org.gradle.testkit.runner.GradleRunner
  */
 class LidaliaDownloadDependenciesPluginFunctionalTest : StringSpec({
 
-    val tempFolder = tempdir()
+  val tempFolder = tempdir()
 
-    fun getProjectDir() = tempFolder
-    fun getBuildFile() = getProjectDir().resolve("build.gradle")
-    fun getSettingsFile() = getProjectDir().resolve("settings.gradle")
+  fun getProjectDir() = tempFolder
+  fun getBuildFile() = getProjectDir().resolve("build.gradle")
+  fun getSettingsFile() = getProjectDir().resolve("settings.gradle")
 
-    "can run task" {
-        // Setup the test build
-        getSettingsFile().writeText("")
-        getBuildFile().writeText("""
+  "can run task" {
+    // Setup the test build
+    getSettingsFile().writeText("")
+    getBuildFile().writeText(
+      """
 plugins {
     id('uk.org.lidalia.downloaddependencies')
 }
-""")
+"""
+    )
 
-        // Run the build
-        val result = GradleRunner.create()
-            .forwardOutput()
-            .withPluginClasspath()
-            .withArguments("--info", "downloadDependencies")
-            .withProjectDir(getProjectDir())
-            .build()
+    // Run the build
+    val result = GradleRunner.create()
+      .forwardOutput()
+      .withPluginClasspath()
+      .withArguments("--info", "downloadDependencies")
+      .withProjectDir(getProjectDir())
+      .build()
 
-        // Verify the result
-        result.output shouldContain "Downloaded all dependencies"
-    }
+    // Verify the result
+    result.output shouldContain "Downloaded all dependencies"
+  }
 })
