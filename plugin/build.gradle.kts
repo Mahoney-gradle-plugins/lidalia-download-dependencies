@@ -1,10 +1,8 @@
 import java.net.URI
 
-@Suppress("DSL_SCOPE_VIOLATION") // Remove once KTIJ-19369 is fixed
 plugins {
     `java-gradle-plugin`
     `kotlin-dsl`
-    alias(libs.plugins.kotlin)
     `maven-publish`
 }
 

@@ -1,5 +1,4 @@
 [versions]
-kotlin = "1.6.21"
 kotest = "5.5.2"
 
 [libraries]
@@ -8,6 +7,3 @@ kotest-runner-junit5 = { group = "io.kotest", name = "kotest-runner-junit5", ver
 
 [bundles]
 kotest = ["kotest-assertions", "kotest-runner-junit5"]
-
-[plugins]
-kotlin = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
