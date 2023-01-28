@@ -1,7 +1,5 @@
 import java.net.URI
 
-group = "uk.org.lidalia.gradle.plugin"
-
 @Suppress("DSL_SCOPE_VIOLATION")
 plugins {
   `java-gradle-plugin`
@@ -13,8 +11,9 @@ plugins {
   alias(libs.plugins.versions)
 }
 
+group = "uk.org.lidalia.gradle.plugin"
+
 repositories {
-  // Use Maven Central for resolving dependencies.
   mavenCentral()
 }
 
