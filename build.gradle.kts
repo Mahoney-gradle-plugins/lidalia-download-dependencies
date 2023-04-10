@@ -17,10 +17,6 @@ repositories {
   mavenCentral()
 }
 
-dependencies {
-  testImplementation(libs.bundles.kotest)
-}
-
 gradlePlugin {
   // Define the plugin
   @Suppress("UNUSED_VARIABLE")
@@ -51,6 +47,12 @@ val functionalTestSourceSet = sourceSets.create("functionalTest") {
 }
 
 configurations["functionalTestImplementation"].extendsFrom(configurations["testImplementation"])
+
+dependencies {
+  testImplementation(libs.bundles.kotest)
+  "functionalTestImplementation"(libs.kotest.assertions.core)
+  "functionalTestImplementation"(libs.kotest.framework.engine)
+}
 
 // Add a task to run the functional tests
 val functionalTest by tasks.registering(Test::class) {

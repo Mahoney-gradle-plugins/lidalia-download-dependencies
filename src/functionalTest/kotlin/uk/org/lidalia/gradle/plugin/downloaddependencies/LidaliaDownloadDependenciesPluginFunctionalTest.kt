@@ -24,10 +24,10 @@ class LidaliaDownloadDependenciesPluginFunctionalTest : StringSpec({
     getSettingsFile().writeText("")
     getBuildFile().writeText(
       """
-plugins {
-    id('uk.org.lidalia.downloaddependencies')
-}
-"""
+      plugins {
+          id('uk.org.lidalia.downloaddependencies')
+      }
+      """.trimIndent(),
     )
 
     // Run the build
