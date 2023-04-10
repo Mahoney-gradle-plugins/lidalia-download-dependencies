@@ -4,7 +4,7 @@ ARG work_dir=/home/$username/work
 ARG gid=1000
 ARG uid=1001
 
-FROM eclipse-temurin:17.0.1_12-jdk-focal as worker
+FROM eclipse-temurin:19.0.2_7-jdk-focal as worker
 ARG username
 ARG work_dir
 ARG gid
