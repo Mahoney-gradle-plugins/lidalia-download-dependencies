@@ -29,7 +29,7 @@ jobs:
       - name: Setup Gradle
         uses: gradle/gradle-build-action@v2
 
-      - uses: aws-actions/configure-aws-credentials@v1-node16
+      - uses: aws-actions/configure-aws-credentials@v2.1.0
         with:
           role-to-assume: arn:aws:iam::044864346383:role/GitHub-Publish-Maven-Artifacts
           aws-region: eu-west-2
